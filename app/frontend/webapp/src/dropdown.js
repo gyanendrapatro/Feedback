@@ -23,9 +23,10 @@ export default function BasicSelect() {
           label="Name"
           onChange={handleChange}
         >
-          <MenuItem value={10}></MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={10}>Charu Mishra</MenuItem>
+          <MenuItem value={20}>Mini Pauranik</MenuItem>
+          <MenuItem value={30}>Kunal Chopra</MenuItem>
+          <MenuItem value={30}>Prakreeti Prasanna</MenuItem>
         </Select>
       </FormControl>
     </Box>

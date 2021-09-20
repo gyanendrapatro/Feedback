@@ -53,7 +53,7 @@ const Events = ({selected_sport, setSport}) => {
             <div className="d-flex col-12 col-md-8 px-0 my-3">
                 <h3>Past Feedbacks</h3>
                 <Button onClick={()=>history.push('/newfeedback')} className="w-50 ml-5"
-                        variant="outline-primary">Create New Report</Button>
+                        variant="outline-secondary">Create New Report</Button>
             </div>
             {/* {state.showmess && <div>
             <Alert variant="success" onClose={() => setState({...state, showmess: false})} dismissible>
