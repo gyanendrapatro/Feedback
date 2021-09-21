@@ -11,6 +11,8 @@ import TextField from '@mui/material/TextField';
 import Rating from '@mui/material/Rating';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {Form, Button, Container} from "react-bootstrap";
+import { useHistory } from 'react-router-dom';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -18,6 +20,7 @@ function createData(name, calories, fat, carbs, protein) {
 
 
 export default function BasicTable() {
+  const history = useHistory();
     const [rowsdata, setRowsData] = useState([])
     const [count, setCount] = useState(1)
     const addRows = ()=>{
@@ -39,7 +42,7 @@ setRowsData(filterdata)
             <TableCell>Sl No.</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Description</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+            <TableCell align="right">Rating</TableCell>
             <TableCell align="right" onClick={addRows}><AddCircleOutlineIcon/></TableCell>
           </TableRow>
         </TableHead>
@@ -66,6 +69,13 @@ setRowsData(filterdata)
         </TableBody>
       </Table>
     </TableContainer>
+    <div class="d-flex justify-content-center mt-2">
+                    <Button  onClick={()=>{
+                        history.push('/feedback')}} variant="secondary">
+                        Submit
+                    </Button>
+    </div>
+
     </>
   );
 }

@@ -1,9 +1,12 @@
 import {Navbar, Nav, NavDropdown} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {ReactComponent as LogoIcon} from "./deloitte-02.svg";
-import React from "react";
+import React, { useState} from "react";
+import Cookies from 'js-cookie';
 
-const MastHead = () => {
+const MastHead = (props) => {
+    const { email } = props;
+    // const [email, setEmail] = useState(Cookies.get('email') || '');
     return (
         <Navbar style={{backgroundColor: "black"}} expand="lg">
             <Navbar.Brand>
@@ -29,9 +32,11 @@ const MastHead = () => {
                     </NavDropdown> */}
                 </Nav>
                 <Nav className="ml-auto">
+                    {email === '' &&
                     <Nav.Link as={Link} to="/login" href="/login" style={{color: "white"}}>
                         Login
-                    </Nav.Link>
+                    </Nav.Link>}
+                    {email !== '' && <Nav.Link style={{color: "white"}}>{email}</Nav.Link>}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

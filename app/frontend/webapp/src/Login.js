@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, Button, Container} from "react-bootstrap";
 import {ReactComponent as LogoIcon} from "./deloittenewsmall.svg";
 import {Link} from "react-router-dom";
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
+    const { showPageHeader } = props;
     const history = useHistory();
+    const [email, setEmail] = useState('');
     return (
         <Container className={"d-flex align-items-center justify-content-center flex-column h-100"} style={{marginTop: 100}}>
             <LogoIcon className={"mb-4"}/>
@@ -15,7 +17,7 @@ const Login = () => {
             </h2>
             <Form style={{minWidth: 300}}>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Control type="email" placeholder="Enter email"/>
+                    <Form.Control type="email" onChange={(e)=>{setEmail(e.target.value)}} placeholder="Enter email"/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
@@ -23,7 +25,8 @@ const Login = () => {
                 </Form.Group>
 
                     <Button  onClick={()=>{
-                        Cookies.set('watched',true)
+                        showPageHeader(email)
+                        Cookies.set('email',email)
                         history.push('/')}} style={{minWidth: 300, backgroundColor: "#0076ce"}} variant="primary" type="submit">
                         Log in
                     </Button>

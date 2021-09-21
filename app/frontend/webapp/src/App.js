@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import MastHead from "./MastHead";
@@ -20,11 +20,13 @@ import PastEvents from "./PastEvents";
 import "./App.css";
 import CreatedUpcomingEvents from "./CreatedUpcomingEvents";
 import CreatedPastEvents from "./CreatedPastEvents";
+import Cookies from 'js-cookie';
 
 const App = () => {
+    const [email, setEmail] = useState('');
     return (
         <Router>
-            <MastHead/>
+            <MastHead email={email}/>
             <Switch>
                 <Route path="/sports">
                     <Sports/>
@@ -42,7 +44,7 @@ const App = () => {
                     <Events/>
                 </Route>
                 <Route path="/login">
-                    <Login/>
+                    <Login showPageHeader={(value) => setEmail(value)}/>
                 </Route>
                 <Route path="/register">
                     <Register/>
