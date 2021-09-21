@@ -13,6 +13,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Form, Button, Container} from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
+import Input from '@mui/material/Input';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -21,20 +22,24 @@ function createData(name, calories, fat, carbs, protein) {
 
 export default function BasicTable() {
   const history = useHistory();
-    const [rowsdata, setRowsData] = useState([])
-    const [count, setCount] = useState(1)
+    const [rowsdata, setRowsData] = useState([createData(1, 0, 0, 0, 0)]);
+    const [count, setCount] = useState(2);
     const addRows = ()=>{
     setRowsData(oldarray => [...oldarray,createData(count, 0, 0, 0, 0)])
     setCount(count+1)
     }
         console.log(rowsdata)
     const delRows = (pos)=>{
+      if (rowsdata.length > 1){
         console.log(pos.name)
 const filterdata = rowsdata.filter(ft => ft.name !== pos.name)
-setRowsData(filterdata)
+setRowsData(filterdata)}
     }
   return (
-      <>
+      <div class="px-4">
+      <div class="mt-3">
+        <TextField style = {{width: '30%'}} id="outlined-basic" label="Report Name" variant="outlined" />
+        </div>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -76,6 +81,6 @@ setRowsData(filterdata)
                     </Button>
     </div>
 
-    </>
+    </div>
   );
 }
